@@ -22,7 +22,7 @@ def random_date(start, end):
     )
 
 blocks = []
-for line in open('ethereum-data/ethereum-blocks.json', 'rw'):
+for line in open('ethereum-data/ethereum-blocks.json', 'r'):
     blocks.append(json.loads(line))
 
 
@@ -32,7 +32,7 @@ for block in range(0, 24):
         number_tx = block_data[1]['transactions'][0]['text'].split()
         block_hash = block_data[2]['Hash'][0]['text']
         difficulty = block_data[6]['difficulty'][0]['text']
-        print difficulty
+        print(difficulty)
         gas_used = block_data[10]['gas_used'][0]['text']
         timestamp = blocks[block]['result']['timestamp']
         block_doc = {
@@ -45,7 +45,7 @@ for block in range(0, 24):
             'gas_used': locale.atoi(gas_used),
         }
         block_id = collection.insert_one(block_doc).inserted_id
-        print block_id
+        print(block_id)
 
 
 

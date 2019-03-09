@@ -95,7 +95,7 @@ class TransactionAggregation:
 
     def scam_or_ico_aggregation(self):
         pipeline = [
-            {"$match": {"timestamp": {"$gte": datetime.datetime(2017,06,01), "$lte": datetime.datetime(2017,07,01)}}},
+            {"$match": {"timestamp": {"$gte": datetime.datetime(2017,6,1), "$lte": datetime.datetime(2017,7,1)}}},
             {"$project": {
                 "to": 1,
                 "txhash": 1,
