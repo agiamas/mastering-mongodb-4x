@@ -4,6 +4,7 @@ from pymongo import MongoClient
 import random
 import datetime
 import locale
+import math
 
 """ a script to append timestamps to our blocks and insert them to the blocks collection of mongo_book database in the default localhost:27017 MongoDB database"""
 
@@ -34,7 +35,7 @@ for block in range(0, 24):
         difficulty = block_data[6]['difficulty'][0]['text']
         print(difficulty)
         gas_used = block_data[10]['gas_used'][0]['text']
-        timestamp = blocks[block]['result']['timestamp']
+        timestamp = datetime.datetime.fromtimestamp(math.floor(blocks[block]['result']['timestamp']/1000))
         block_doc = {
             'timestamp': timestamp,
             'block_height': int(block_height),
