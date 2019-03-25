@@ -1,7 +1,7 @@
 require 'kafka'
 require 'csv'
 require 'json'
-require 'mongo_exchange_client'
+require './mongo_exchange_client'
 
 class KafkaClient
   def initialize
